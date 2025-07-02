@@ -112,14 +112,6 @@ def generate_implementation_process (yaml_data, implementation)
                 value = value_expression(item_data)
                 type = item_data['member_of'] ? 'auto ' : ''
                 implementation.puts "\t\t// #{item_name} - #{name}, #{unit}"
-                if item_data['status']
-                    implementation.puts "\t\tswitch (#{item_name}) {"
-                    item_data['status'].each do |value, status|
-                        implementation.puts "\t\t\tcase #{value}: #{item_name}_status = \"#{status}\"; break;"
-                    end
-                    implementation.puts "\t\t\tdefault: #{item_name}_status = \"Unknown\";"
-                    implementation.puts "\t\t}"
-                end
                 if item_data['array_size']
                     index_expr = value_expression(item_data['array_index'])
                     implementation.puts "\t\tauto #{item_name}_index = #{index_expr};"
@@ -133,6 +125,14 @@ def generate_implementation_process (yaml_data, implementation)
                         implementation.puts "\t\t\t#{member_of}[i] = #{item_name};"
                         implementation.puts "\t\t}"
                     end
+                end
+                if item_data['status']
+                    implementation.puts "\t\tswitch (#{item_name}) {"
+                    item_data['status'].each do |value, status|
+                        implementation.puts "\t\t\tcase #{value}: #{item_name}_status = \"#{status}\"; break;"
+                    end
+                    implementation.puts "\t\t\tdefault: #{item_name}_status = \"Unknown\";"
+                    implementation.puts "\t\t}"
                 end
         
             end
