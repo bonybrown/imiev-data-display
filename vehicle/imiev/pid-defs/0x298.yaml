@@ -1,0 +1,52 @@
+
+
+
+Frame: 
+ arbitration_id: 0x298
+ name: "0x298"
+ comment: "Motor RPM and Temp"
+ size: 8
+ test_frame: 
+ - "5859545F00002BD8"
+
+motor_temperature_1:
+  name: "Motor Temp 1"
+  size: 8
+  start_bit: 0
+  offset: -50
+  is_little_endian: False
+  unit: "C"
+
+motor_temperature_2:
+  name: "Motor Temp 2"
+  size: 8
+  start_bit: 8
+  offset: -50
+  is_little_endian: False
+  unit: "C"
+  
+motor_temperature_3:
+  name: "Motor Temp 3"
+  size: 8
+  start_bit: 16
+  offset: -50
+  is_little_endian: False
+  unit: "C"
+
+motor_temperature_4:
+  name: "Motor Temp 4"
+  size: 8
+  start_bit: 24
+  offset: -50
+  is_little_endian: False
+  unit: "C"
+
+motor_rpm:
+  name: "Motor RPM"
+  size: 16
+  start_bit: 48
+  offset: -10000
+  is_little_endian: False
+  unit: "rpm"
+  is_signed: True
+  

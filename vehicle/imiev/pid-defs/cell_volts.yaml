@@ -1,0 +1,70 @@
+
+
+
+Frame: 
+ arbitration_id: [0x6E1, 0x6E2, 0x6E3, 0x6E4]
+ comment: "Traction battery Cell Voltages and Temperatures"
+ test_frame: 
+  - "09004A4A018B018A"
+
+cell_voltages:
+  name: Cell Voltages
+  array_size: 96 # 12 * 6, not all used
+  unit: "Volts"
+  array_index:
+    start_bit: 0
+    size: 8
+  size: 16
+  is_float: True
+
+cell_temperatures:
+  name: Cell Temperatures
+  array_size: 96 # 12 * 6, not all used
+  unit: "C"
+  array_index:
+    start_bit: 0
+    size: 8
+  size: 8
+  is_float: false
+  is_signed: true
+
+cell_voltage_1:
+  member_of: cell_voltages
+  index: (cell_voltages_index - 1) * 8 + (pid - 0x6e1) * 2
+  name: "Cell Voltage 1"
+  size: 16
+  start_bit: 32
+  factor: 0.005
+  offset: 2.1
+  unit: "Volts"
+
+cell_voltage_2:
+  member_of: cell_voltages
+  index: (cell_voltages_index - 1) * 8 + (pid - 0x6e1) * 2 + 1
+  name: "Cell Voltage 2"
+  size: 16
+  start_bit: 48
+  factor: 0.005
+  offset: 2.1
+  unit: "Volts"
+
+cell_temp_1:
+  member_of: cell_temperatures
+  index: (cell_temperatures_index - 1) * 8 + (pid - 0x6e1) * 2
+  name: "Cell Temperature 1"
+  size: 8
+  start_bit: 8
+  offset: -50
+  unit: "C"
+  is_signed: True
+
+cell_temp_2:
+  member_of: cell_temperatures
+  index: (cell_temperatures_index - 1) * 8 + (pid - 0x6e1) * 2 + 1
+  name: "Cell Temperature 2"
+  size: 8
+  start_bit: 16
+  offset: -50
+  unit: "C"
+  is_signed: True
+
