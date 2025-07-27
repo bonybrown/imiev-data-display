@@ -1,0 +1,6 @@
+# generate-model.rb
+
+This ruby script generates the C++ code (header and implementation)
+for a `Model` class that represents the data points
+described in the `pid-defs/` directory for a vehicle.
+

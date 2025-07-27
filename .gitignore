@@ -36,6 +36,7 @@
 *.exe
 *.out
 *.app
+candisplay/candisplay
 
 # debug information files
 *.dwo
