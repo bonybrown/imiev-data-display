@@ -47,6 +47,8 @@ def generate_header(yaml_data)
         bool operator==(const Model&) const = default;
         void process(uint16_t pid, uint64_t data);
         void dump();
+        size_t pids_processed_this_update = 0;
+        void start_update(){pids_processed_this_update = 0;};
     STDCHEADER
     yaml_data.each do |file, data|
         header.puts "// File: #{file} - #{data['Frame']['description']}"
@@ -105,6 +107,7 @@ def generate_implementation_process (yaml_data, implementation)
                 implementation.puts <<~PIDHEADER
                 \t// PID: #{pids} - #{data['description']}
                 \tif (pid == #{condition}){
+                \t\tpids_processed_this_update++;
                 PIDHEADER
             else
                 name = item_data['name']

@@ -16,7 +16,7 @@
 
 EXE = candisplay
 IMGUI_DIR = ../..
-SOURCES = main.cpp
+SOURCES = main.cpp parser.cpp dashboard.cpp
 SOURCES += model.cpp
 
 # Uncomment this line to compile on raspberry pi with OpenGL ES

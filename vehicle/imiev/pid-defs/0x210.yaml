@@ -12,8 +12,8 @@ Frame:
 
 accelerator_pedal_percentage:
   name: "Accelerator Pedal Percentage"
-  size: 7
+  size: 8
   start_bit: 16
-  factor: .4
+  factor: 0.0390625 # 1/256 * 100
   unit: "Percentage"
   is_signed: False 

@@ -5,21 +5,25 @@
 void Model::process(uint16_t pid, uint64_t data){
 	// PID: ["0x12"] - 
 	if (pid == 0x12){
+		pids_processed_this_update++;
 		// key_status - Key Status, Status
 		key_status = (((data >> ( 64 - 0 - 8 )) & (uint64_t)(( 1 << 8 ) - 1)));
 	}
 	// PID: ["0x101"] - 
 	if (pid == 0x101){
+		pids_processed_this_update++;
 		// key_status_101 - Key Status, Status
 		key_status_101 = (((data >> ( 64 - 0 - 8 )) & (uint64_t)(( 1 << 8 ) - 1)));
 	}
 	// PID: ["0x149"] - 
 	if (pid == 0x149){
+		pids_processed_this_update++;
 		// rotation_esc - Rotation ESC, N/A
 		rotation_esc = (((data >> ( 64 - 32 - 16 )) & (uint64_t)(( 1 << 16 ) - 1)) * 0.030363757818667642) + -1000;
 	}
 	// PID: ["0x200"] - 
 	if (pid == 0x200){
+		pids_processed_this_update++;
 		// wheel_rotation_1 - Wheel Rotation One, N/A
 		wheel_rotation_1 = (((data >> ( 64 - 15 - 12 )) & (uint64_t)(( 1 << 12 ) - 1)) * 0.34) + -1209;
 		// wheel_rotation_2 - Wheel Rotation Two, N/A
@@ -27,6 +31,7 @@ void Model::process(uint16_t pid, uint64_t data){
 	}
 	// PID: ["0x208"] - 
 	if (pid == 0x208){
+		pids_processed_this_update++;
 		// brake_pedal_position - Brake Pedal Position, N/A
 		brake_pedal_position = (((data >> ( 64 - 16 - 12 )) & (uint64_t)(( 1 << 12 ) - 1)) * 0.5) + -766;
 		// wheel_rotation_1_208 - Wheel Rotation One, N/A
@@ -36,26 +41,31 @@ void Model::process(uint16_t pid, uint64_t data){
 	}
 	// PID: ["0x210"] - 
 	if (pid == 0x210){
+		pids_processed_this_update++;
 		// accelerator_pedal_percentage - Accelerator Pedal Percentage, Percentage
-		accelerator_pedal_percentage = (((data >> ( 64 - 16 - 7 )) & (uint64_t)(( 1 << 7 ) - 1)) * 0.4);
+		accelerator_pedal_percentage = (((data >> ( 64 - 16 - 8 )) & (uint64_t)(( 1 << 8 ) - 1)) * 0.0390625);
 	}
 	// PID: ["0x215"] - 
 	if (pid == 0x215){
+		pids_processed_this_update++;
 		// vehicle_speed - Vehicle Speed, km/h
 		vehicle_speed = (((data >> ( 64 - 0 - 16 )) & (uint64_t)(( 1 << 16 ) - 1)) * 0.0078125);
 	}
 	// PID: ["0x231"] - 
 	if (pid == 0x231){
+		pids_processed_this_update++;
 		// brake_pedal_switch - Brake Pedal Switch Sensor, Status
 		brake_pedal_switch = (((data >> ( 64 - 32 - 8 )) & (uint64_t)(( 1 << 8 ) - 1)));
 	}
 	// PID: ["0x285"] - 
 	if (pid == 0x285){
+		pids_processed_this_update++;
 		// acceleration - Acceleration, m/s^2
 		acceleration = (((data >> ( 64 - 0 - 16 )) & (uint64_t)(( 1 << 16 ) - 1)) * 0.0025) + -5;
 	}
 	// PID: ["0x298"] - 
 	if (pid == 0x298){
+		pids_processed_this_update++;
 		// motor_temperature_1 - Motor Temp 1, C
 		motor_temperature_1 = (((data >> ( 64 - 0 - 8 )) & (uint64_t)(( 1 << 8 ) - 1))) + -50;
 		// motor_temperature_2 - Motor Temp 2, C
@@ -69,11 +79,13 @@ void Model::process(uint16_t pid, uint64_t data){
 	}
 	// PID: ["0x346"] - 
 	if (pid == 0x346){
+		pids_processed_this_update++;
 		// range_remaining - Range, Kilometers
 		range_remaining = (((data >> ( 64 - 56 - 8 )) & (uint64_t)(( 1 << 8 ) - 1)));
 	}
 	// PID: ["0x373"] - 
 	if (pid == 0x373){
+		pids_processed_this_update++;
 		// cell_max_voltage - Battery Cell Maximum Voltage, Volts
 		cell_max_voltage = (((data >> ( 64 - 0 - 8 )) & (uint64_t)(( 1 << 8 ) - 1)) * 0.01) + 2.1;
 		// cell_min_voltage - Battery Cell Min Voltage, N/A
@@ -85,6 +97,7 @@ void Model::process(uint16_t pid, uint64_t data){
 	}
 	// PID: ["0x374"] - 
 	if (pid == 0x374){
+		pids_processed_this_update++;
 		// battery_soc_1 - Battery SOC 1, %
 		battery_soc_1 = (((data >> ( 64 - 0 - 8 )) & (uint64_t)(( 1 << 8 ) - 1)) * 0.5) + -10;
 		// battery_soc_2 - Battery SOC 2, %
@@ -98,6 +111,7 @@ void Model::process(uint16_t pid, uint64_t data){
 	}
 	// PID: ["0x384"] - 
 	if (pid == 0x384){
+		pids_processed_this_update++;
 		// air_conditioner_amps - AC (A), Amps
 		air_conditioner_amps = (((data >> ( 64 - 0 - 16 )) & (uint64_t)(( 1 << 16 ) - 1)) * 0.001);
 		// battery_12v_charge_amps - Charging 12v Battery (A), Amps
@@ -107,6 +121,7 @@ void Model::process(uint16_t pid, uint64_t data){
 	}
 	// PID: ["0x389"] - 
 	if (pid == 0x389){
+		pids_processed_this_update++;
 		// ac_charge_dc_volts - Charger DC Voltage(V), Volts
 		ac_charge_dc_volts = (((data >> ( 64 - 0 - 8 )) & (uint64_t)(( 1 << 8 ) - 1)) * 2.01);
 		// ac_charge_input_volts - Charger Input Voltage(V), Volts
@@ -122,6 +137,7 @@ void Model::process(uint16_t pid, uint64_t data){
 	}
 	// PID: ["0x3a4"] - 
 	if (pid == 0x3a4){
+		pids_processed_this_update++;
 		// hvac_heating_level - Heating Level, Status
 		hvac_heating_level = (((data >> ( 64 - 0 - 3 )) & (uint64_t)(( 1 << 3 ) - 1)));
 		// hvac_max_button - MAX Button, Status
@@ -137,6 +153,7 @@ void Model::process(uint16_t pid, uint64_t data){
 	}
 	// PID: ["0x412"] - 
 	if (pid == 0x412){
+		pids_processed_this_update++;
 		// key_status_412 - Key Status, N/A
 		key_status_412 = (((data >> ( 64 - 0 - 8 )) & (uint64_t)(( 1 << 8 ) - 1)));
 		switch (key_status_412) {
@@ -151,6 +168,7 @@ void Model::process(uint16_t pid, uint64_t data){
 	}
 	// PID: ["0x418"] - 
 	if (pid == 0x418){
+		pids_processed_this_update++;
 		// gear_shift_selection - Gear Shift Selection, N/A
 		gear_shift_selection = (((data >> ( 64 - 0 - 8 )) & (uint64_t)(( 1 << 8 ) - 1)));
 		switch (gear_shift_selection) {
@@ -166,6 +184,7 @@ void Model::process(uint16_t pid, uint64_t data){
 	}
 	// PID: ["0x424"] - 
 	if (pid == 0x424){
+		pids_processed_this_update++;
 		// lights_automatic - Automatic Light, N/A
 		lights_automatic = (((data >> ( 64 - 2 - 1 )) & (uint64_t)(( 1 << 1 ) - 1)));
 		switch (lights_automatic) {
@@ -253,6 +272,7 @@ void Model::process(uint16_t pid, uint64_t data){
 	}
 	// PID: ["0x696"] - 
 	if (pid == 0x696){
+		pids_processed_this_update++;
 		// motor_current_amps - Motor Current Amps, Amps
 		motor_current_amps = (((data >> ( 64 - 16 - 16 )) & (uint64_t)(( 1 << 16 ) - 1)) * 0.05) + -25;
 		// motor_regen_amps - Regen Amps, Amps
@@ -260,6 +280,7 @@ void Model::process(uint16_t pid, uint64_t data){
 	}
 	// PID: ["0x697"] - 
 	if (pid == 0x697){
+		pids_processed_this_update++;
 		// chademo_connected - Chademo Connected, N/A
 		chademo_connected = (((data >> ( 64 - 0 - 8 )) & (uint64_t)(( 1 << 8 ) - 1)));
 		// chademo_charge_percent - Chademo Charge %, Percentage
@@ -269,6 +290,7 @@ void Model::process(uint16_t pid, uint64_t data){
 	}
 	// PID: ["0x6e1", "0x6e2", "0x6e3", "0x6e4"] - 
 	if (pid == 0x6e1 || pid == 0x6e2 || pid == 0x6e3 || pid == 0x6e4){
+		pids_processed_this_update++;
 		// cell_voltages - Cell Voltages, Volts
 		auto cell_voltages_index = (((data >> ( 64 - 0 - 8 )) & (uint64_t)(( 1 << 8 ) - 1)));
 		// cell_temperatures - Cell Temperatures, C

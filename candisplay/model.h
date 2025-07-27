@@ -9,6 +9,8 @@ class Model{
     bool operator==(const Model&) const = default;
     void process(uint16_t pid, uint64_t data);
     void dump();
+    size_t pids_processed_this_update = 0;
+    void start_update(){pids_processed_this_update = 0;};
 // File: 0x012.yaml - 
     uint16_t key_status;     //Key Status - Status
 // File: 0x101.yaml - 
