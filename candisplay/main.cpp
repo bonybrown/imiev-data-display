@@ -18,7 +18,7 @@
 #include <SDL_opengl.h>
 #endif
 
-#include "../model.h"
+#include "model.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
